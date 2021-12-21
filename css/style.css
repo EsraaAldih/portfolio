@@ -376,33 +376,62 @@ section .container {
 /*--------------------------------------------------------------
 # Skills
 --------------------------------------------------------------*/
-.skills .progress {
-  height: 60px;
-  display: block;
-  background: none;
-  border-radius: 0;
+
+.Count:after{
+  content:"%"
 }
-.skills .progress .skill {
-  padding: 10px 0;
-  margin: 0;
-  text-transform: uppercase;
-  display: block;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: #fff;
-}
-.skills .progress .skill .val {
-  float: right;
-  font-style: normal;
-}
-.skills .progress-bar-wrap {
+
+.skillbar {
+	position:relative;
+	display:block;
+	margin-bottom:15px;
+	width:100%;
   background: rgba(255, 255, 255, 0.2);
+  height:15px;
+	border-radius:3px;
+	transition:0.4s linear;
+	transition-property:width, background-color;
 }
-.skills .progress-bar {
-  width: 50%;
-  height: 10px;
-  transition: 0.9s;
+
+.skillbar-title {
+	position:absolute;
+	top:0;
+	left:0;
+  width:110px;
+	font-weight:bold;
+	font-size:13px;
+	color:#ffffff;
+	border-top-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+
+.skillbar-title span {
+	display:block;
+  background-color: #9c9311;
+	padding:0 20px;
+	height:15px;
+	line-height:15px;
+	border-top-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+
+.skillbar-bar {
+	height:15px;
+	width:0px;
   background-color: #d2c618;
+	border-radius:3px;
+
+}
+
+.skill-bar-percent {
+	position:absolute;
+	right:10px;
+	top:0;
+	font-size:11px;
+	height:15px;
+	line-height:15px;
+  color:#ffffff;
+  font-weight: bold;
 }
 
 /*--------------------------------------------------------------

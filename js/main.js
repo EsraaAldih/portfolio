@@ -1,5 +1,5 @@
 
-(function() {
+jQuery(document).ready(function(){
   "use strict";
 
   /**
@@ -152,57 +152,81 @@
 
 
 
-
-
-
-
-
-})()
-  
-/**
-     Gallery portfolio
+  /**
+    // Gallery portfolio
  **/
 
-$(document).ready(function(){
 
   // filter
   $('nav a').on('click', function(event){
-      event.preventDefault();
-      // current class
-      $('nav li.current').removeClass('current');
-      $(this).parent().addClass('current');
+    event.preventDefault();
+    // current class
+    $('nav li.current').removeClass('current');
+    $(this).parent().addClass('current');
 
-      // set new heading
-      $('h1.heading').text($(this).text());
-      
-      // filter link text
-      var category = $(this).text().toLowerCase().replace(' ', '-');
-      
-      // remove hidden class if "all" is selected
-      if(category == 'all-projects'){
-          $('ul#gallery li:hidden').fadeIn('slow').removeClass('hidden');
-      } else {
-          $('ul#gallery li').each(function(){
-             if(!$(this).hasClass(category)){
-                 $(this).hide().addClass('hidden');
-             } else {
-                 $(this).fadeIn('slow').removeClass('hidden');
-             }
-          });
-      }
-      return false;        
-  });
-  // lightbox
-  $('ul#gallery a').on('click', function(event){
-      event.preventDefault();
-      var link = $(this).find('img').attr('src');
-      $('.gallery img').attr('src', '');
-      $('.gallery img').attr('src', link);
-      $('.gallery').fadeIn('slow');
-  });
-  // close lightbox
-  $('.gallery').on('click', function(event){
-      event.preventDefault();
-      $('.gallery').fadeOut('slow');
-  });
+    // set new heading
+    $('h1.heading').text($(this).text());
+    
+    // filter link text
+    var category = $(this).text().toLowerCase().replace(' ', '-');
+    
+    // remove hidden class if "all" is selected
+    if(category == 'all-projects'){
+        $('ul#gallery li:hidden').fadeIn('slow').removeClass('hidden');
+    } else {
+        $('ul#gallery li').each(function(){
+           if(!$(this).hasClass(category)){
+               $(this).hide().addClass('hidden');
+           } else {
+               $(this).fadeIn('slow').removeClass('hidden');
+           }
+        });
+    }
+    return false;        
+});
+// lightbox
+$('ul#gallery a').on('click', function(event){
+    event.preventDefault();
+    var link = $(this).find('img').attr('src');
+    $('.gallery img').attr('src', '');
+    $('.gallery img').attr('src', link);
+    $('.gallery').fadeIn('slow');
+});
+// close lightbox
+$('.gallery').on('click', function(event){
+    event.preventDefault();
+    $('.gallery').fadeOut('slow');
+});
+
+
+
+/** 
+
+* // Skills Bar Animation
+
+*  **/
+
+$('.skillbar').each(function(){
+  $(this).find('.skillbar-bar').animate({
+    width:$(this).attr('data-percent')
+  },6000);
+});
+
+$('.Count').each(function () {
+var $this = $(this);
+$({ Counter: 0 }).animate({ Counter: $this.text() }, {
+  duration: 6000,
+  easing: 'swing',
+  step: function () {
+    $this.text(Math.ceil(this.Counter));
+  }
+});
+});
+
+
+
+
+
+
 })
+  
